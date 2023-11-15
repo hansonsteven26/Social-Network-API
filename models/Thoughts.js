@@ -1,5 +1,28 @@
 const { Schema, model } = require('mongoose');
 
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: new ObjectId,
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxLength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      get: format,
+    },
+  }
+);
+
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -12,9 +35,20 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now(),
       get: format,
-    }
-  }
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    reactions: [reactionSchema],
+  },
 );
+
+thoughtSchema
+  .virtual('reactionCount')
+  .get(function () {
+    return this.reactions.length;
+  });
 
 function setTwoDigits(num) {
   let twoDigits = num.toString().padStart(2, '0');
