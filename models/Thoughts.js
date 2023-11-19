@@ -69,3 +69,7 @@ function format(date) {
     ].join(':') // separate them with a :
   );
 }
+
+const Thought = model('thought', thoughtSchema);
+
+module.exports = Thought;
