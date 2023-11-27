@@ -4,7 +4,7 @@ const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
-      default: new ObjectId,
+      default: () => new Types.ObjectId(),
     },
     reactionBody: {
       type: String,
@@ -42,6 +42,13 @@ const thoughtSchema = new Schema(
     },
     reactions: [reactionSchema],
   },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+    id: false,
+  }
 );
 
 thoughtSchema
