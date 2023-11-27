@@ -2,7 +2,7 @@
 
 ## Description
 
-With this program, you can create users, thoughts, and reactions. Users have thoughts, and thoughts have reactions. Add, view, update, or remove your thoughts, reaction text, email, and username using GET, PUT, POST, and DELETE routes.
+With this program, you can create users, thoughts, and reactions. Users have thoughts, and thoughts have reactions. Users can also add other users as a friend. Add, view, update, or remove your thoughts, reaction text, email, and username using GET, PUT, POST, and DELETE routes.
 
 ## Usage
 
